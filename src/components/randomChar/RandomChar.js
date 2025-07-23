@@ -22,7 +22,7 @@ class RandomChar extends Component {
     componentWillUnmount() {
         clearInterval(this.timerId);
     }
-
+    
     onCharLoaded = (char) => {
         this.setState({
             char, 
@@ -42,16 +42,17 @@ class RandomChar extends Component {
             error: true
         })
     }
-
+    
     updateChar = () => {
         const id = Math.floor(Math.random() * 20) + 1;
         this.onCharLoading();
         this.marvelService
-            .getCharacter(id)
+        .getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
-    }
 
+    }
+    
     render() {
 
         const {char, loading, error} = this.state;
