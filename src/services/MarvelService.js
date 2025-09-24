@@ -1,16 +1,14 @@
 import { useHttp } from "../hooks/http.hook";
 
 const useMarvelService = () => {
-    const {loading, request, error, clearError} = useHttp();
+	const { loading, request, error, clearError } = useHttp();
 
-    const _apiBase = 'https://marvel-server-zeta.vercel.app/';
-    const _apiKey = 'd4eecb0c66dedbfae4eab45d312fc1df';
+	const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
 
-    const _baseOffset = 10;
+  	const _apiKey = 'apikey=d4eecb0c66dedbfae4eab45d312fc1df';
+	const _baseOffset = 5;
 
-
-
-   	const getAllCharacters = async (offset = _baseOffset) => {
+	const getAllCharacters = async (offset = _baseOffset) => {
 		const res = await request(
 			`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`
 		);
@@ -18,9 +16,11 @@ const useMarvelService = () => {
 	};
 
 	const getCharacter = async (id) => {
-		const res = await request(`${_apiBase}characters/${id}?${_apiKey}`);
-		return _transformCharacter(res.data.results[0]);
-	};
+    const res = await request(`${_apiBase}characters/${id}?${_apiKey}`);
+    console.log("getCharacter response:", res);
+    return _transformCharacter(res.data.results[0]);
+};
+
 
 	const getAllComics = async (offset = 0) => {
 		const res = await request(
