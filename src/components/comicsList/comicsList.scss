@@ -1,36 +1,75 @@
-.comics {
-    &__list {
-        margin-top: 45px;
-    }
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 225px);
-        justify-content: space-between;
-        row-gap: 55px;
-    }
-    &__item {
-        transition: 0.3s transform;
-        &-img {
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
-            width: 225px;
-            height: 345px;
-        }
-        &-name {
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 18px;
-        }
-        &-price {
-            margin-top: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 18px;
-            color: rgba(0, 0, 0, 0.6);
-            text-transform: uppercase;
-        }
-        &:hover {
-            transform: translateY(-5px);
-        }
-    }
+.comics__list {
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comics__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    gap: 55px 30px;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.comics__item {
+    transition: transform 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+}
+
+.comics__item:hover {
+    transform: translateY(-5px);
+}
+
+.comics__item-img {
+    width: 225px;
+    height: 345px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.3s ease;
+}
+
+.comics__item:hover .comics__item-img {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.comics__item-name {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #222;
+}
+
+.comics__item-price {
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+}
+
+.button.button__main.button__long {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    background-color: #9c1f27;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.button.button__main.button__long:hover {
+    background-color: #b32a33;
 }
